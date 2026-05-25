@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f7f8fa"/>
+  <rect x="70" y="58" width="1060" height="404" rx="28" fill="#ffffff" stroke="#d8e0e7"/>
+  <defs><pattern id="weave" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M0 17 H34 M17 0 V34" stroke="#cbd5e1" stroke-width="8"/></pattern></defs>
+  <rect x="120" y="120" width="310" height="250" rx="24" fill="url(#weave)"/>
+  <circle cx="210" cy="190" r="28" fill="#60a5fa" opacity=".85"/>
+  <circle cx="300" cy="250" r="36" fill="#38bdf8" opacity=".8"/>
+  <circle cx="235" cy="315" r="22" fill="#93c5fd" opacity=".9"/>
+  <text x="500" y="145" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#17202a">Material Evidence Chain</text>
+  <g font-family="Arial, sans-serif" font-size="24">
+    <rect x="505" y="185" width="205" height="62" rx="14" fill="#eef2ff"/><text x="535" y="225" fill="#3730a3">Test Method</text>
+    <rect x="745" y="185" width="205" height="62" rx="14" fill="#e6f4f1"/><text x="775" y="225" fill="#0f766e">Wash Proof</text>
+    <rect x="505" y="275" width="205" height="62" rx="14" fill="#fff4df"/><text x="535" y="315" fill="#b45309">Scale Ready</text>
+    <rect x="745" y="275" width="205" height="62" rx="14" fill="#fff1f2"/><text x="775" y="315" fill="#be123c">Claim Limits</text>
+  </g>
+  <text x="500" y="405" font-family="Arial, sans-serif" font-size="22" fill="#5f6b76">PFAS-free is credible only when it is testable, scalable, and explainable.</text>
+</svg>

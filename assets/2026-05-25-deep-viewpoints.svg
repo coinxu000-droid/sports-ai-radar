@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f7f8fa"/>
+  <rect x="66" y="55" width="1068" height="410" rx="28" fill="#ffffff" stroke="#d8e0e7"/>
+  <text x="125" y="120" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#17202a">From Signals To Action</text>
+  <g font-family="Arial, sans-serif" font-size="24" font-weight="700">
+    <circle cx="210" cy="265" r="72" fill="#eef2ff"/><text x="168" y="273" fill="#3730a3">Signal</text>
+    <circle cx="455" cy="265" r="72" fill="#e6f4f1"/><text x="395" y="273" fill="#0f766e">Judgment</text>
+    <circle cx="700" cy="265" r="72" fill="#fff4df"/><text x="652" y="273" fill="#b45309">Question</text>
+    <circle cx="945" cy="265" r="72" fill="#fff1f2"/><text x="900" y="273" fill="#be123c">Action</text>
+  </g>
+  <path d="M284 265 H382 M529 265 H627 M774 265 H872" stroke="#17202a" stroke-width="8" stroke-linecap="round"/>
+  <text x="125" y="405" font-family="Arial, sans-serif" font-size="23" fill="#5f6b76">A brief is useful when it changes one work decision, not when it stores more information.</text>
+</svg>

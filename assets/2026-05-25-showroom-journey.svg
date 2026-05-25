@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f7f8fa"/>
+  <rect x="68" y="55" width="1064" height="410" rx="28" fill="#ffffff" stroke="#d8e0e7"/>
+  <path d="M150 360 C260 180 410 410 540 250 S820 120 1020 300" fill="none" stroke="#0f766e" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700">
+    <circle cx="150" cy="360" r="46" fill="#fff4df"/><text x="107" y="368" fill="#b45309">Pre</text>
+    <circle cx="430" cy="315" r="56" fill="#eef2ff"/><text x="383" y="323" fill="#3730a3">Lab</text>
+    <circle cx="690" cy="185" r="56" fill="#e6f4f1"/><text x="638" y="193" fill="#0f766e">Route</text>
+    <circle cx="1020" cy="300" r="56" fill="#fff1f2"/><text x="972" y="308" fill="#be123c">Share</text>
+  </g>
+  <text x="150" y="120" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#17202a">Showroom As Journey</text>
+  <text x="150" y="160" font-family="Arial, sans-serif" font-size="23" fill="#5f6b76">Pre-visit context, material lab, mission route, post-visit memory.</text>
+</svg>

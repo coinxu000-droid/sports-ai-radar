@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f7f8fa"/>
+  <rect x="60" y="55" width="1080" height="410" rx="28" fill="#ffffff" stroke="#d8e0e7"/>
+  <circle cx="200" cy="250" r="95" fill="#fff4df"/>
+  <path d="M140 280 C190 210 260 210 325 280" fill="none" stroke="#b45309" stroke-width="18" stroke-linecap="round"/>
+  <path d="M138 310 L335 310" stroke="#17202a" stroke-width="12" stroke-linecap="round"/>
+  <rect x="430" y="130" width="165" height="72" rx="16" fill="#e6f4f1"/>
+  <rect x="430" y="224" width="165" height="72" rx="16" fill="#eef2ff"/>
+  <rect x="430" y="318" width="165" height="72" rx="16" fill="#fff1f2"/>
+  <path d="M610 166 C700 166 710 260 800 260" stroke="#0f766e" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M610 260 H800" stroke="#2563eb" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M610 354 C700 354 710 260 800 260" stroke="#be123c" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <circle cx="865" cy="260" r="78" fill="#17202a"/>
+  <circle cx="865" cy="260" r="46" fill="#ffffff"/>
+  <text x="430" y="110" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#17202a">Launch as Participation System</text>
+  <text x="430" y="177" font-family="Arial, sans-serif" font-size="24" fill="#0f766e">Platform Story</text>
+  <text x="430" y="271" font-family="Arial, sans-serif" font-size="24" fill="#3730a3">Community Mission</text>
+  <text x="430" y="365" font-family="Arial, sans-serif" font-size="24" fill="#be123c">Shareable Moment</text>
+  <text x="790" y="455" font-family="Arial, sans-serif" font-size="22" fill="#5f6b76">Product + Culture + Movement</text>
+</svg>

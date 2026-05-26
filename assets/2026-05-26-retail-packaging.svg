@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#fff7ed"/>
+  <rect x="90" y="80" width="320" height="340" rx="20" fill="#fed7aa"/>
+  <rect x="440" y="80" width="320" height="340" rx="20" fill="#ffffff" stroke="#fb923c"/>
+  <rect x="790" y="80" width="320" height="340" rx="20" fill="#ffedd5"/>
+  <text x="130" y="170" font-family="Arial" font-size="34" font-weight="700" fill="#7c2d12">Packaging</text>
+  <text x="480" y="170" font-family="Arial" font-size="34" font-weight="700" fill="#7c2d12">Retail AI</text>
+  <text x="830" y="170" font-family="Arial" font-size="34" font-weight="700" fill="#7c2d12">Event</text>
+  <text x="130" y="235" font-family="Arial" font-size="22" fill="#7c2d12">material + story + code</text>
+  <text x="480" y="235" font-family="Arial" font-size="22" fill="#7c2d12">service + discovery</text>
+  <text x="830" y="235" font-family="Arial" font-size="22" fill="#7c2d12">journey + reuse</text>
+  <text x="90" y="470" font-family="Arial" font-size="30" font-weight="700" fill="#9a3412">The store is becoming a decision interface.</text>
+</svg>

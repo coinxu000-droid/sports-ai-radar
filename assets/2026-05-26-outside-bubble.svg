@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f5f5f4"/>
+  <circle cx="270" cy="245" r="125" fill="#fde68a"/>
+  <circle cx="600" cy="245" r="125" fill="#bfdbfe"/>
+  <circle cx="930" cy="245" r="125" fill="#bbf7d0"/>
+  <text x="210" y="255" font-family="Arial" font-size="34" font-weight="700" fill="#111827">Trust</text>
+  <text x="525" y="255" font-family="Arial" font-size="34" font-weight="700" fill="#111827">Touch</text>
+  <text x="845" y="255" font-family="Arial" font-size="34" font-weight="700" fill="#111827">Memory</text>
+  <text x="105" y="455" font-family="Arial" font-size="30" font-weight="700" fill="#111827">Outside reading should change the way we brief products.</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f4f0e7"/>
+  <path d="M80 390 C260 260 420 250 610 305 C760 350 910 305 1080 150" fill="none" stroke="#0f766e" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="250" cy="320" r="58" fill="#111827"/>
+  <circle cx="590" cy="306" r="58" fill="#2563eb"/>
+  <circle cx="930" cy="252" r="58" fill="#dc2626"/>
+  <text x="80" y="95" font-family="Arial" font-size="42" font-weight="700" fill="#111827">Speed Is A System</text>
+  <text x="82" y="145" font-family="Arial" font-size="24" fill="#374151">football boots, running foam, sub-elite community, launch ritual</text>
+  <text x="190" y="420" font-family="Arial" font-size="24" fill="#111827">product</text>
+  <text x="535" y="420" font-family="Arial" font-size="24" fill="#111827">material</text>
+  <text x="870" y="420" font-family="Arial" font-size="24" fill="#111827">community</text>
+</svg>

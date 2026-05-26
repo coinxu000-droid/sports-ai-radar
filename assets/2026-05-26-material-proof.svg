@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#eef2f7"/>
+  <rect x="90" y="110" width="250" height="260" rx="18" fill="#ffffff" stroke="#94a3b8"/>
+  <rect x="475" y="110" width="250" height="260" rx="18" fill="#ffffff" stroke="#94a3b8"/>
+  <rect x="860" y="110" width="250" height="260" rx="18" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="120" y="180" font-family="Arial" font-size="34" font-weight="700" fill="#0f172a">Test</text>
+  <text x="505" y="180" font-family="Arial" font-size="34" font-weight="700" fill="#0f172a">Scale</text>
+  <text x="890" y="180" font-family="Arial" font-size="34" font-weight="700" fill="#0f172a">Explain</text>
+  <text x="120" y="235" font-family="Arial" font-size="22" fill="#334155">water, abrasion, comfort</text>
+  <text x="505" y="235" font-family="Arial" font-size="22" fill="#334155">supplier, cost, yield</text>
+  <text x="890" y="235" font-family="Arial" font-size="22" fill="#334155">consumer language</text>
+  <text x="80" y="455" font-family="Arial" font-size="32" font-weight="700" fill="#166534">Material claims need an evidence chain.</text>
+</svg>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-05-27 运动鞋服与 AI 早报动效版</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;600;800&display=swap');
+    :root {
+      --bg:#faf9f6; --fg:#141414; --soft:rgba(20,20,20,.62);
+      --muted:rgba(20,20,20,.34); --accent:#b91c1c; --teal:#0f766e;
+      --rule:rgba(0,0,0,.11); --paper:#fffdf8;
+      --serif:"Noto Serif SC","Source Han Serif SC",Georgia,serif;
+      --sans:"Noto Sans SC",Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box;margin:0}
+    body{min-height:100vh;display:grid;place-items:center;background:var(--bg);font-family:var(--sans);overflow:hidden;color:var(--fg)}
+    #stage{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--bg);box-shadow:0 20px 80px rgba(50,40,25,.14);transform-origin:center center}
+    .beat{position:absolute;inset:0;display:none;overflow:hidden}
+    .beat.active{display:block}
+    .beat-grid{height:100%;display:grid;grid-template-columns:250px 1fr 610px;gap:54px;padding:76px 88px 94px;align-items:stretch}
+    .source-rail{border-right:1px solid var(--rule);padding-right:34px;display:flex;flex-direction:column;justify-content:space-between}
+    .kicker{font-size:19px;line-height:1.35;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+    .scene-num{font-family:var(--serif);font-size:142px;font-weight:900;line-height:.9;color:var(--fg)}
+    .verb{display:inline-block;width:max-content;border:2px solid var(--fg);padding:10px 18px;font-size:30px;font-weight:800;background:var(--paper)}
+    .main-copy{display:flex;flex-direction:column;justify-content:center;gap:34px;min-width:0}
+    h1{font-family:var(--serif);font-size:104px;line-height:1.05;font-weight:900;letter-spacing:0;max-width:840px}
+    .lead{font-size:34px;line-height:1.55;color:var(--soft);max-width:860px}
+    .en{font-size:25px;line-height:1.45;color:var(--teal);font-weight:700;max-width:760px}
+    .visual-board{align-self:center;min-height:690px;border:2px solid var(--fg);background:var(--paper);padding:44px;display:grid;grid-template-rows:auto 1fr auto;gap:38px;box-shadow:14px 14px 0 rgba(185,28,28,.08)}
+    .board-title{font-family:var(--serif);font-size:42px;line-height:1.2;font-weight:900}
+    .signal-lines{display:flex;flex-direction:column;justify-content:center;gap:28px}
+    .signal-lines span{display:block;height:32px;background:linear-gradient(90deg,var(--accent),rgba(185,28,28,.16));transform-origin:left center}
+    .signal-lines span:nth-child(2){width:82%;background:linear-gradient(90deg,var(--teal),rgba(15,118,110,.15))}
+    .signal-lines span:nth-child(3){width:68%}
+    .signal-lines span:nth-child(4){width:54%;background:var(--fg)}
+    .prompt{font-size:24px;line-height:1.45;color:var(--muted);border-top:1px solid var(--rule);padding-top:24px}
+    .nav{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;gap:12px;z-index:20}
+    .dot{width:42px;height:7px;border:0;background:rgba(20,20,20,.18);cursor:pointer}
+    .dot.active{background:var(--accent)}
+    .hint{position:absolute;right:30px;bottom:24px;font-size:16px;color:var(--muted);z-index:20}
+    .meta{position:absolute;left:88px;top:36px;font-size:16px;color:var(--muted);z-index:20}
+  </style>
+</head>
+<body>
+<main id="stage" aria-live="polite">
+  <div class="meta">jacky-motion editorial-magazine / click, space, arrows</div>
+  
+    <section class="beat" data-steps="3" data-audio-map='[]'>
+      <div class="beat-grid beat-1">
+        <aside class="source-rail">
+          <div class="kicker">Sports AI Radar / 2026-05-27</div>
+          <div class="scene-num">01</div>
+          <div class="verb">高亮</div>
+        </aside>
+        <div class="main-copy">
+          <h1>今天是自动化保底版早报。核心判断是：先让信息</h1>
+          <p class="lead">今天是自动化保底版早报。核心判断是：先让信息系统按时交付，再把深度研究作为质量升级。</p>
+          <p class="en">Fallback automation signal</p>
+        </div>
+        <div class="visual-board">
+          <div class="board-title">自动化早报视觉卡</div>
+          <div class="signal-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="prompt">clean editorial card, sportswear, AI workflow, data signals</div>
+        </div>
+      </div>
+    </section>
+    <section class="beat" data-steps="3" data-audio-map='[]'>
+      <div class="beat-grid beat-2">
+        <aside class="source-rail">
+          <div class="kicker">Sports AI Radar / 2026-05-27</div>
+          <div class="scene-num">02</div>
+          <div class="verb">连接</div>
+        </aside>
+        <div class="main-copy">
+          <h1>第一，运动鞋服信号仍然要回到产品场景、材料证</h1>
+          <p class="lead">第一，运动鞋服信号仍然要回到产品场景、材料证据和用户参与。</p>
+          <p class="en">Fallback automation signal</p>
+        </div>
+        <div class="visual-board">
+          <div class="board-title">自动化早报视觉卡</div>
+          <div class="signal-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="prompt">clean editorial card, sportswear, AI workflow, data signals</div>
+        </div>
+      </div>
+    </section>
+    <section class="beat" data-steps="3" data-audio-map='[]'>
+      <div class="beat-grid beat-3">
+        <aside class="source-rail">
+          <div class="kicker">Sports AI Radar / 2026-05-27</div>
+          <div class="scene-num">03</div>
+          <div class="verb">对比</div>
+        </aside>
+        <div class="main-copy">
+          <h1>第二，包装、展厅和零售体验正在成为用户形成信</h1>
+          <p class="lead">第二，包装、展厅和零售体验正在成为用户形成信任和选择理由的界面。</p>
+          <p class="en">Fallback automation signal</p>
+        </div>
+        <div class="visual-board">
+          <div class="board-title">自动化早报视觉卡</div>
+          <div class="signal-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="prompt">clean editorial card, sportswear, AI workflow, data signals</div>
+        </div>
+      </div>
+    </section>
+    <section class="beat" data-steps="3" data-audio-map='[]'>
+      <div class="beat-grid beat-4">
+        <aside class="source-rail">
+          <div class="kicker">Sports AI Radar / 2026-05-27</div>
+          <div class="scene-num">04</div>
+          <div class="verb">展开</div>
+        </aside>
+        <div class="main-copy">
+          <h1>第三，AI 自动化的关键不只是生成内容，而是</h1>
+          <p class="lead">第三，AI 自动化的关键不只是生成内容，而是可观测、可降级、可恢复。</p>
+          <p class="en">Fallback automation signal</p>
+        </div>
+        <div class="visual-board">
+          <div class="board-title">自动化早报视觉卡</div>
+          <div class="signal-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="prompt">clean editorial card, sportswear, AI workflow, data signals</div>
+        </div>
+      </div>
+    </section>
+    <section class="beat" data-steps="3" data-audio-map='[]'>
+      <div class="beat-grid beat-5">
+        <aside class="source-rail">
+          <div class="kicker">Sports AI Radar / 2026-05-27</div>
+          <div class="scene-num">05</div>
+          <div class="verb">流动</div>
+        </aside>
+        <div class="main-copy">
+          <h1>今天的行动：从这些来源里选三条，分别转成一个</h1>
+          <p class="lead">今天的行动：从这些来源里选三条，分别转成一个产品 brief、一个展厅模块、一个 AI 流程改造点。</p>
+          <p class="en">Fallback automation signal</p>
+        </div>
+        <div class="visual-board">
+          <div class="board-title">自动化早报视觉卡</div>
+          <div class="signal-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="prompt">clean editorial card, sportswear, AI workflow, data signals</div>
+        </div>
+      </div>
+    </section>
+  <div class="nav" aria-label="beats"></div>
+  <div class="hint">M: manual/audio/auto</div>
+</main>
+<script>
+const beatData = [{"title": "今天是自动化保底版早报。核心判断是：先让信息", "voice": "今天是自动化保底版早报。核心判断是：先让信息系统按时交付，再把深度研究作为质量升级。", "verb": "高亮"}, {"title": "第一，运动鞋服信号仍然要回到产品场景、材料证", "voice": "第一，运动鞋服信号仍然要回到产品场景、材料证据和用户参与。", "verb": "连接"}, {"title": "第二，包装、展厅和零售体验正在成为用户形成信", "voice": "第二，包装、展厅和零售体验正在成为用户形成信任和选择理由的界面。", "verb": "对比"}, {"title": "第三，AI 自动化的关键不只是生成内容，而是", "voice": "第三，AI 自动化的关键不只是生成内容，而是可观测、可降级、可恢复。", "verb": "展开"}, {"title": "今天的行动：从这些来源里选三条，分别转成一个", "voice": "今天的行动：从这些来源里选三条，分别转成一个产品 brief、一个展厅模块、一个 AI 流程改造点。", "verb": "流动"}];
+const beats = [...document.querySelectorAll('.beat')];
+const nav = document.querySelector('.nav');
+let current = 0;
+let mode = new URLSearchParams(location.search).has('auto') ? 'auto' : (new URLSearchParams(location.search).has('audio') ? 'audio' : 'manual');
+let audioEl = null;
+beats.forEach((_, i) => {
+  const b = document.createElement('button');
+  b.className = 'dot';
+  b.type = 'button';
+  b.title = `Beat ${i + 1}`;
+  b.onclick = () => showBeat(i);
+  nav.appendChild(b);
+});
+function resizeStage(){
+  const stage = document.getElementById('stage');
+  const scale = Math.min(innerWidth / 1920, innerHeight / 1080);
+  stage.style.transform = `scale(${scale})`;
+}
+function stopAudio(){ if(audioEl){ audioEl.pause(); audioEl = null; } }
+function playStepAudio(beat, step){
+  if(mode === 'manual') return;
+  const map = JSON.parse(beat.dataset.audioMap || '[]');
+  const src = map[step];
+  if(!src) return;
+  stopAudio();
+  audioEl = new Audio(src);
+  audioEl.play().catch(() => {});
+  if(mode === 'auto') audioEl.onended = () => setTimeout(advance, 200);
+}
+function animateBeat(beat){
+  if(!window.gsap) return;
+  const tl = gsap.timeline();
+  tl.fromTo(beat.querySelector('.source-rail'), {x:-50, opacity:0}, {x:0, opacity:1, duration:.55, ease:'power3.out'})
+    .fromTo(beat.querySelector('h1'), {y:42, opacity:0}, {y:0, opacity:1, duration:.65, ease:'power3.out'}, '-=.25')
+    .fromTo(beat.querySelector('.lead'), {y:30, opacity:0}, {y:0, opacity:1, duration:.5}, '-=.2')
+    .fromTo(beat.querySelector('.visual-board'), {x:60, opacity:0}, {x:0, opacity:1, duration:.65, ease:'power3.out'}, '-=.45')
+    .fromTo(beat.querySelectorAll('.signal-lines span'), {scaleX:0}, {scaleX:1, duration:.45, stagger:.13, ease:'power2.out'}, '-=.18')
+    .fromTo(beat.querySelector('.en'), {opacity:0}, {opacity:1, duration:.4}, '-=.1');
+}
+function showBeat(index){
+  stopAudio();
+  current = (index + beats.length) % beats.length;
+  beats.forEach((beat, i) => beat.classList.toggle('active', i === current));
+  [...nav.children].forEach((dot, i) => dot.classList.toggle('active', i === current));
+  animateBeat(beats[current]);
+  playStepAudio(beats[current], 0);
+}
+function advance(){ showBeat(current + 1); }
+addEventListener('resize', resizeStage);
+addEventListener('keydown', e => {
+  if([' ', 'ArrowRight'].includes(e.key)) advance();
+  if(e.key === 'ArrowLeft') showBeat(current - 1);
+  if(e.key.toLowerCase() === 'm') mode = mode === 'manual' ? 'audio' : mode === 'audio' ? 'auto' : 'manual';
+});
+document.getElementById('stage').addEventListener('click', advance);
+resizeStage();
+showBeat(0);
+</script>
+</body>
+</html>

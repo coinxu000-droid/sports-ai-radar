@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morning Brief Radar 测试版 | 2026-05-28</title>
+  <meta name="description" content="基于 morning-brief-radar skill 生成的早报测试版" />
+  <style>
+    :root {
+      --bg:#0a0a0f; --panel:#171827; --panel2:#202236; --text:#f0f2f8; --muted:#9aa0b8;
+      --line:#2b2d42; --blue:#4a9eff; --cyan:#00d4aa; --purple:#a855f7; --orange:#f59e0b;
+      --red:#ef4444; --green:#22c55e; --pink:#ff4d8d; --radius:10px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.72}
+    a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+    .nav{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow-x:auto;padding:12px 18px;background:rgba(10,10,15,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
+    .nav a,.filter button{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);background:transparent;font-size:12px}
+    .filter button{cursor:pointer}.filter button:hover,.nav a:hover{border-color:var(--blue);color:var(--text);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:46px 20px 72px}
+    .header{text-align:center;padding:24px 0 32px;border-bottom:1px solid var(--line);margin-bottom:32px}
+    .date{font-family:Consolas,monospace;color:var(--blue);letter-spacing:2px;font-size:13px}.eyebrow{color:var(--muted);font-size:12px;margin-top:8px}
+    h1{font-size:30px;margin:8px 0 4px}.subtitle{margin:0;color:var(--muted)}
+    .core,.deep,.actions{border:1px solid rgba(74,158,255,.22);background:linear-gradient(135deg,rgba(74,158,255,.09),rgba(0,212,170,.05));border-radius:var(--radius);padding:22px;margin-bottom:28px}
+    .label{color:var(--blue);font-size:11px;letter-spacing:1.5px;font-weight:800;text-transform:uppercase}
+    .keywords,.tags,.filter{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.keyword,.tag{font-size:11px;padding:3px 9px;border:1px solid rgba(74,158,255,.22);border-radius:999px;color:var(--blue);background:rgba(74,158,255,.08)}
+    .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px}.number{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}.value{font-size:28px;font-weight:850;color:var(--cyan)}.num-label{font-size:12px;color:var(--muted);margin-top:4px}
+    .module{margin:34px 0;scroll-margin-top:80px}.module-header{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line);cursor:pointer}.icon{width:34px;height:34px;border-radius:8px;background:rgba(74,158,255,.14);display:grid;place-items:center}.module-title{font-size:17px;font-weight:800}.module-en{font-size:12px;color:var(--muted)}.count{margin-left:auto;color:var(--muted);font-size:11px}
+    .module-body{margin-top:16px}.module-body.collapsed{display:none}
+    .news-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:12px}.news-card:hover{background:var(--panel2)}.news-card.hidden-by-filter{display:none}
+    .news-head{display:flex;justify-content:space-between;gap:12px}.news-title{font-weight:800}.news-en-title{color:var(--muted);font-size:13px;font-style:italic;margin-top:6px}.signal-badge{font-size:10px;font-weight:850;border-radius:5px;padding:2px 8px;height:fit-content}.critical{color:var(--red);background:rgba(239,68,68,.14)}.watch{color:var(--orange);background:rgba(245,158,11,.14)}.ref{color:var(--green);background:rgba(34,197,94,.14)}
+    .news-section{margin-top:12px}.news-section-label{color:var(--muted);font-size:11px;font-weight:850;letter-spacing:1px;text-transform:uppercase}.news-section-text{font-size:14px;color:#d5d8e8}.news-action{color:var(--cyan);font-weight:700;margin-top:12px}.source{color:var(--muted);font-size:12px;margin-top:10px}
+    .deep{border-color:rgba(168,85,247,.22);background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(74,158,255,.05))}.deep .label{color:var(--purple)}
+    .actions{border-color:rgba(0,212,170,.22)}.action-item{padding:12px 0;border-bottom:1px solid rgba(0,212,170,.12)}.action-item:last-child{border-bottom:none}
+    footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;padding-top:24px;text-align:center}
+    @media(max-width:720px){.container{padding:28px 14px 56px}.numbers{grid-template-columns:repeat(2,1fr)}h1{font-size:24px}.news-head{flex-direction:column}.count{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="#core">核心判断</a><a href="#m1">AI工具</a><a href="#m2">组织变革</a><a href="#m3">鞋服趋势</a><a href="#m4">品牌营销</a><a href="#cross">跨圈层</a><a href="#deep">深度观点</a><a href="#actions">行动清单</a>
+  </nav>
+  <main class="container">
+    <header class="header">
+      <div class="date">2026 · 05 · 28 · THURSDAY · 16:00 BJT</div>
+      <h1>Morning Brief Radar · 测试版早报</h1>
+      <p class="subtitle">AI Agent × 组织速度 × 鞋服产品 × 产品包装与品牌营销</p>
+      <div class="eyebrow">自动化任务试运行产物，不与现有早报合并</div>
+    </header>
+
+    <section class="core" id="core">
+      <div class="label">Core Judgment / 今日核心判断</div>
+      <p>今天最值得盯的不是单个模型或单个新品，而是“可持续执行能力”正在变成组织竞争的底层指标。AI 侧从会回答转向会连接、会执行、可追踪；消费品侧从单品爆款转向场景、材料、产品叙事、品牌活动和零售体验的系统化组合。对我们的直接启发是：早报、样册、PPT、展厅和产品企划都要从“信息陈列”升级为“可行动的决策界面”。</p>
+      <div class="keywords"><span class="keyword">Agent 可执行性</span><span class="keyword">组织速度</span><span class="keyword">场景化产品</span><span class="keyword">品牌活动</span><span class="keyword">来源可追踪</span></div>
+    </section>
+
+    <section class="numbers">
+      <div class="number"><div class="value">4M+</div><div class="num-label">OpenAI 称 Codex 每周使用人数超过 400 万</div></div>
+      <div class="number"><div class="value">276K+</div><div class="num-label">KPMG 将 Claude 覆盖到 27.6 万员工</div></div>
+      <div class="number"><div class="value">2,804</div><div class="num-label">Interpack 2026 参展商数量</div></div>
+      <div class="number"><div class="value">3-5</div><div class="num-label">每个早报模块建议保留的强信号数</div></div>
+    </section>
+
+    <section class="filter">
+      <button onclick="filterSignal('all')">ALL</button><button onclick="filterSignal('critical')">CRITICAL</button><button onclick="filterSignal('watch')">WATCH</button><button onclick="filterSignal('ref')">REFERENCE</button>
+    </section>
+
+    <section class="module" id="m1">
+      <div class="module-header"><div class="icon">AI</div><div><div class="module-title">一、AI 工具 / 模型 / Agent / 工作流</div><div class="module-en">AI Tools / Models / Agents / Workflows</div></div><span class="count">3 items</span></div>
+      <div class="module-body">
+        <article class="news-card" data-signal="critical">
+          <div class="news-head"><div><div class="news-title">OpenAI GPT-5.5 与 Codex 信号：AI 正从“帮忙写”转向“端到端做”</div><div class="news-en-title">OpenAI frames GPT-5.5 and Codex around end-to-end knowledge work and coding agents.</div></div><span class="signal-badge critical">CRITICAL</span></div>
+          <div class="tags"><span class="tag">OPENAI</span><span class="tag">CODEX</span><span class="tag">AGENTIC WORK</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">OpenAI 对 GPT-5.5 的叙述重点已经从模型能力转向“跨工具完成任务”，并在 Gartner 企业 AI 编码 Agent 相关信息中强调 Codex 的企业级使用。这里的核心不是更会写代码，而是工作可以被拆成可验证的长流程。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">早报自动化也应该按这个方向设计：收集、筛选、判断、生成、校验、发布，每一步都能留下来源和结果，而不是一次性聊天生成。</div></div>
+          <div class="news-action">行动问题：我们的早报发布链路里，哪一步最需要“可追踪”和“可重跑”？</div>
+          <div class="source">Source: <a href="https://openai.com/index/introducing-gpt-5-5/" target="_blank">OpenAI GPT-5.5</a> / <a href="https://openai.com/index/gartner-2026-agentic-coding-leader/" target="_blank">OpenAI Codex Gartner note</a></div>
+        </article>
+
+        <article class="news-card" data-signal="critical">
+          <div class="news-head"><div><div class="news-title">Anthropic 收购 Stainless：Agent 竞争开始争夺“连接能力”</div><div class="news-en-title">Anthropic's Stainless acquisition points to API, SDK and MCP connectivity as agent infrastructure.</div></div><span class="signal-badge critical">CRITICAL</span></div>
+          <div class="tags"><span class="tag">ANTHROPIC</span><span class="tag">MCP</span><span class="tag">CONNECTORS</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">Anthropic 明确把 Stainless 的 SDK、CLI 与 MCP server 工具链放进 Claude 平台能力中。信号很清楚：未来 Agent 的差异不只在模型，而在能稳定连接多少工具、数据和业务系统。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">如果早报、样册、产品库、PPT、展厅资料都各自孤立，AI 很难真正进入日常流程。下一步要把资料变成可连接、可检索、可调用的结构。</div></div>
+          <div class="news-action">行动问题：哪些本地资料最值得先做成“AI 可连接”的源？</div>
+          <div class="source">Source: <a href="https://www.anthropic.com/news/anthropic-acquires-stainless" target="_blank">Anthropic</a></div>
+        </article>
+
+        <article class="news-card" data-signal="watch">
+          <div class="news-head"><div><div class="news-title">Mistral Workflows：企业 Agent 的关键词变成耐久、可观测、可暂停</div><div class="news-en-title">Mistral Workflows highlights durable execution, observability, and human approval.</div></div><span class="signal-badge watch">WATCH</span></div>
+          <div class="tags"><span class="tag">MISTRAL</span><span class="tag">WORKFLOWS</span><span class="tag">HITL</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">Mistral 的 Workflows 把企业 AI 从演示推进到生产：失败可恢复、步骤可追踪、关键节点可人工审批。这是所有长任务自动化都绕不开的工程标准。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">下午 4 点自动早报最好也有“人工审核/复跑”预留：自动生成不等于自动相信，尤其涉及事实、链接和外部趋势判断。</div></div>
+          <div class="news-action">行动问题：发布前是否需要设置一个“只生成不外发”的审核模式？</div>
+          <div class="source">Source: <a href="https://mistral.ai/it/news/workflows" target="_blank">Mistral AI</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m2">
+      <div class="module-header"><div class="icon">ORG</div><div><div class="module-title">二、AI 与组织 / 商业变革</div><div class="module-en">AI & Organization / Business Transformation</div></div><span class="count">3 items</span></div>
+      <div class="module-body">
+        <article class="news-card" data-signal="critical">
+          <div class="news-head"><div><div class="news-title">KPMG × Claude：AI 从个人工具进入全员工作底座</div><div class="news-en-title">KPMG's Claude rollout shows enterprise AI moving into daily professional workflows.</div></div><span class="signal-badge critical">CRITICAL</span></div>
+          <div class="tags"><span class="tag">KPMG</span><span class="tag">ENTERPRISE AI</span><span class="tag">WORKFORCE</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">KPMG 将 Claude 嵌入核心业务和员工工具，说明企业 AI 的衡量标准正在变成“多少真实岗位改变了工作方式”，而不是“买了多少账号”。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">对小团队同样成立：不是每个人都要会复杂提示词，而是让早报、PPT、资料整理、图像方向、会议纪要这些高频工作有固定 AI 流程。</div></div>
+          <div class="news-action">行动问题：本周能不能先固定一个“早报到 PPT 选题”的工作流？</div>
+          <div class="source">Source: <a href="https://www.anthropic.com/news/anthropic-kpmg" target="_blank">Anthropic / KPMG</a></div>
+        </article>
+
+        <article class="news-card" data-signal="watch">
+          <div class="news-head"><div><div class="news-title">SAP 自主企业叙事：Agent 会进入采购、供应链和服务流程</div><div class="news-en-title">SAP's autonomous enterprise push connects Joule agents with HR, procurement, supply chain, and service cloud.</div></div><span class="signal-badge watch">WATCH</span></div>
+          <div class="tags"><span class="tag">SAP</span><span class="tag">SUPPLY CHAIN</span><span class="tag">PROCUREMENT</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">SAP Sapphire 2026 强调 Joule agents 与企业数据、供应链、采购和客户服务流程结合。AI 不是单独工具，而是进入业务系统的执行层。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">未来供应商沟通、报价、交期、材料确认都会被客户的企业系统重新要求：数据是否标准、响应是否快、证据是否完整会成为竞争条件。</div></div>
+          <div class="news-action">行动问题：我们的资料能否支持客户快速判断材料、工艺、交期和案例？</div>
+          <div class="source">Source: <a href="https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/" target="_blank">SAP News Center</a></div>
+        </article>
+
+        <article class="news-card" data-signal="ref">
+          <div class="news-head"><div><div class="news-title">Agent 安全成为新管理问题：权限越大，边界越要清楚</div><div class="news-en-title">Agentic systems create new security and governance questions.</div></div><span class="signal-badge ref">REFERENCE</span></div>
+          <div class="tags"><span class="tag">SECURITY</span><span class="tag">GOVERNANCE</span><span class="tag">RISK</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">行业讨论正在从“Agent 能做什么”转向“Agent 被允许做什么”。当工具能访问文件、网页、系统和账号，权限边界、日志和回滚比提示词更重要。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">自动早报可以自动生成，但不应自动删除、覆盖、群发或修改长期资料库，除非有明确授权和留痕。</div></div>
+          <div class="news-action">行动问题：自动化任务的写入目录、命名规则、发布权限是否已经固定？</div>
+          <div class="source">Source: <a href="https://www.techradar.com/pro/why-self-running-agents-are-creating-the-biggest-security-crisis-of-2026" target="_blank">TechRadar Pro</a> / <a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank">Anthropic Engineering</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m3">
+      <div class="module-header"><div class="icon">RUN</div><div><div class="module-title">三、运动鞋服 / 产品 / 营销趋势</div><div class="module-en">Sportswear / Product / Marketing Signals</div></div><span class="count">2 items</span></div>
+      <div class="module-body">
+        <article class="news-card" data-signal="watch">
+          <div class="news-head"><div><div class="news-title">2026 球鞋趋势呈两条线：轻薄空气感与复古回潮并行</div><div class="news-en-title">Sneaker trend coverage points to airy silhouettes and retro revivals.</div></div><span class="signal-badge watch">WATCH</span></div>
+          <div class="tags"><span class="tag">SNEAKER</span><span class="tag">TREND</span><span class="tag">RETRO</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">时尚媒体对 2026 球鞋趋势的共同判断是：一边是更轻、更薄、更简洁的空气感鞋型，一边是复古轮廓和材质回归。这不是矛盾，而是消费分层。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">鞋面工艺可以按两套视觉语言准备：轻薄透气、低负担；复古网面、麂皮、厚实耐磨。样册不应只按工艺分，而应按消费场景和风格情绪分。</div></div>
+          <div class="news-action">行动问题：下一版样册是否增加“轻薄通勤”和“复古户外”两组场景页？</div>
+          <div class="source">Source: <a href="https://www.whowhatwear.com/fashion/shoes/sneaker-trends-2026" target="_blank">Who What Wear</a> / <a href="https://www.marieclaire.co.uk/fashion/2026-trainer-trends" target="_blank">Marie Claire UK</a></div>
+        </article>
+
+        <article class="news-card" data-signal="ref">
+          <div class="news-head"><div><div class="news-title">Adidas × Satisfy 跑鞋联名：性能鞋开始吸收亚文化视觉</div><div class="news-en-title">Adidas and Satisfy show performance running shoes taking on culture-heavy styling.</div></div><span class="signal-badge ref">REFERENCE</span></div>
+          <div class="tags"><span class="tag">ADIDAS</span><span class="tag">RUNNING</span><span class="tag">COLLAB</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">性能跑鞋不再只靠参数讲故事，联名和视觉语言正在把竞速、街头、DIY、滑板等文化元素拉进产品叙事。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">做产品提案时，单页不要只讲材料参数。要补一层“这双鞋属于什么文化语境、适合什么人晒出来”。</div></div>
+          <div class="news-action">行动问题：我们的样册里有没有能被客户直接拿去讲品牌故事的视觉页？</div>
+          <div class="source">Source: <a href="https://www.t3.com/active/running/adidas-adizero-adios-pro-4-satisfy-launch-0526" target="_blank">T3</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m4">
+      <div class="module-header"><div class="icon">MKT</div><div><div class="module-title">四、产品包装与品牌营销 / 活动 / 零售 / 展会体验</div><div class="module-en">Product Packaging & Brand Marketing / Campaign / Retail / Exhibition Experience</div></div><span class="count">3 items</span></div>
+      <div class="module-body">
+        <article class="news-card" data-signal="critical">
+          <div class="news-head"><div><div class="news-title">Luxe Pack New York 2026：高端产品叙事的三条线是材料、智能、可持续</div><div class="news-en-title">Premium product storytelling signals center on materials, smart features, and sustainability.</div></div><span class="signal-badge critical">CRITICAL</span></div>
+          <div class="tags"><span class="tag">LUXE PACK</span><span class="tag">SMART PACKAGING</span><span class="tag">SUSTAINABILITY</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">Rabobank 对 Luxe Pack New York 的观察显示，纸化、智能包装和可持续叙事已经不只是环保标签，而是在影响高端品牌的价值表达和数据触点。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">展厅、品牌活动和产品提案可以把“材料触感 + 数字交互 + 回收故事”做成一套市场叙事，而不是只停留在包装材料说明。</div></div>
+          <div class="news-action">行动问题：一个产品样品能否同时讲清楚触感、环保依据、数字触点和品牌活动主题？</div>
+          <div class="source">Source: <a href="https://www.rabobank.com/knowledge/q011526574-luxe-pack-new-york-2026-premium-materials-smart-packaging-and-sustainability-take-center-stage" target="_blank">Rabobank</a></div>
+        </article>
+
+        <article class="news-card" data-signal="watch">
+          <div class="news-head"><div><div class="news-title">Interpack 2026：品牌交付背后的 AI 重点落在线效率和机器人系统</div><div class="news-en-title">Interpack reports point to AI-driven robotics and line-efficiency systems behind brand delivery.</div></div><span class="signal-badge watch">WATCH</span></div>
+          <div class="tags"><span class="tag">INTERPACK</span><span class="tag">AI ROBOTICS</span><span class="tag">EFFICIENCY</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">Interpack 2026 相关报道提到大量参展商和 AI 驱动机器人、数字化效率项目。包装行业对 AI 的需求更偏生产线、数据分析和效率，而不是单纯生成设计图。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">做品牌活动、展会趋势页或产品上市方案时，不能只写“AI 设计”。更有价值的是说明 AI 如何减少等待、返工、停线和沟通成本，让营销承诺更容易被交付。</div></div>
+          <div class="news-action">行动问题：展会 PPT 里是否要加入“AI 如何改善交付效率”的流程图？</div>
+          <div class="source">Source: <a href="https://www.printindustry.news/story/51917/interpack-2026-keeps-pace-with-changes-in-global-packaging" target="_blank">Print Industry News</a> / <a href="https://www.packworld.com/trends/pmmi-news/news/22960651/ai-automation-and-sustainability-lead-packaging-and-processing-trends" target="_blank">Packaging World</a></div>
+        </article>
+
+        <article class="news-card" data-signal="ref">
+          <div class="news-head"><div><div class="news-title">产品包装营销正在从“换材料”走向“消费者互动与数据反馈”</div><div class="news-en-title">Product packaging and brand marketing increasingly combine intelligence, sustainability, and consumer engagement.</div></div><span class="signal-badge ref">REFERENCE</span></div>
+          <div class="tags"><span class="tag">PACKAGING</span><span class="tag">CONSUMER ENGAGEMENT</span><span class="tag">DATA</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">多家包装行业观察都在强调：可持续仍重要，但差异化开始来自数据、消费者互动和智能化生产决策。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">品牌营销提案可以增加“消费者看到什么、参与什么、分享什么、品牌获得什么反馈、门店如何陈列”的体验路径图。</div></div>
+          <div class="news-action">行动问题：我们的案例是否能讲清楚从看到产品、理解卖点、参与活动到复购分享的完整路径？</div>
+          <div class="source">Source: <a href="https://mm.group/news/packaging/five-trends-shaping-the-packaging-industry-in-2026/" target="_blank">MM Group</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="cross">
+      <div class="module-header"><div class="icon">X</div><div><div class="module-title">五、跨圈层阅读</div><div class="module-en">Cross-Field Reading</div></div><span class="count">2 items</span></div>
+      <div class="module-body">
+        <article class="news-card" data-signal="watch">
+          <div class="news-head"><div><div class="news-title">工业 AI 与物理建模：Mistral 收购 Emmi AI 的制造业含义</div><div class="news-en-title">Mistral's Emmi AI acquisition points to physics-aware industrial agents.</div></div><span class="signal-badge watch">WATCH</span></div>
+          <div class="tags"><span class="tag">INDUSTRIAL AI</span><span class="tag">PHYSICS AI</span><span class="tag">MANUFACTURING</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">Mistral 收购物理 AI 公司 Emmi AI，方向是让模型理解工程和制造问题。长期看，AI 会从“写报告”进入“辅助工程判断”。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">鞋面材料、结构、耐磨、透气、回弹这些问题未来都可能被模型辅助模拟。现在先把材料参数、测试结果、工艺条件结构化，后面才有机会接上。</div></div>
+          <div class="news-action">行动问题：材料测试数据是否有统一字段？是否能被 AI 读取？</div>
+          <div class="source">Source: <a href="https://mistral.ai/news/science-to-win-industrial-ai" target="_blank">Mistral AI</a></div>
+        </article>
+
+        <article class="news-card" data-signal="ref">
+          <div class="news-head"><div><div class="news-title">AI 创意工具进入 Blender 等创作软件：设计工作会更像“编排”</div><div class="news-en-title">Creative connectors show AI moving into familiar design and 3D tools.</div></div><span class="signal-badge ref">REFERENCE</span></div>
+          <div class="tags"><span class="tag">CREATIVE AI</span><span class="tag">BLENDER</span><span class="tag">DESIGN WORKFLOW</span></div>
+          <div class="news-section"><div class="news-section-label">为什么重要</div><div class="news-section-text">Anthropic 的创意工具连接器说明 AI 正在进入设计师熟悉的软件生态，而不是要求所有人换到新平台。</div></div>
+          <div class="news-section"><div class="news-section-label">工作关联</div><div class="news-section-text">展厅、品牌活动和产品视觉的 AI 工作流，也应该围绕现有工具链搭桥：图片、PPT、3D、视频、素材库之间要能互相交接。</div></div>
+          <div class="news-action">行动问题：目前视觉提案里哪一步最适合先引入 AI 连接器或脚本？</div>
+          <div class="source">Source: <a href="https://www.anthropic.com/news/claude-for-creative-work" target="_blank">Anthropic</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="deep" id="deep">
+      <div class="label">Deep Viewpoints / 深度观点</div>
+      <p><strong>01.</strong> 自动化的真正门槛不是“能不能生成”，而是“生成之后能不能被信任”。来源、日志、复跑、审核，会决定早报能不能长期发布。</p>
+      <p><strong>02.</strong> Agent 的下一轮竞争是连接能力。谁能把分散资料、业务系统和人的判断连起来，谁就能把 AI 从玩具变成流程。</p>
+      <p><strong>03.</strong> 鞋服和品牌营销都在从单点卖点转向系统体验。产品页、样册页、活动页、展厅页都要讲清楚场景、材料、互动、传播和交付速度。</p>
+      <p><strong>04.</strong> 组织速度会压过单项创意。真正的竞争不是谁有最多趋势素材，而是谁能最快把趋势变成可演示、可报价、可交付的方案。</p>
+    </section>
+
+    <section class="actions" id="actions">
+      <div class="label">Today I Would Watch / 今日优先盯三件事</div>
+      <div class="action-item"><strong>1. 固定早报发布链路：</strong>生成目录、文件命名、来源记录、人工审核点和发布摘要要标准化。</div>
+      <div class="action-item"><strong>2. 重做样册目录逻辑：</strong>从工艺分类试切到场景分类，先做“轻薄通勤 / 复古户外 / 产品包装营销活动”三组样页。</div>
+      <div class="action-item"><strong>3. 建一个可连接资料池：</strong>把材料、工艺、图片、案例、链接整理成 AI 能检索的结构，优先服务早报和 PPT。</div>
+    </section>
+
+    <footer>
+      Generated by morning-brief-radar test run · 2026-05-28 16:00 BJT<br />
+      说明：本测试版使用公开网页来源生成；涉及趋势判断处为基于来源的编辑性推断，不等同于原文结论。
+    </footer>
+  </main>
+  <script>
+    function filterSignal(level){
+      document.querySelectorAll('.news-card[data-signal]').forEach(function(card){
+        card.classList.toggle('hidden-by-filter', level !== 'all' && card.dataset.signal !== level);
+      });
+    }
+    document.querySelectorAll('.module-header').forEach(function(header){
+      header.addEventListener('click', function(){
+        var body = header.parentElement.querySelector('.module-body');
+        if(body) body.classList.toggle('collapsed');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <rect width="1200" height="520" fill="#f8fafc"/>
+  <rect x="68" y="74" width="1064" height="330" rx="24" fill="#1d4ed8" opacity="0.12"/>
+  <circle cx="230" cy="244" r="78" fill="#1d4ed8" opacity="0.72"/>
+  <circle cx="600" cy="244" r="78" fill="#1d4ed8" opacity="0.40"/>
+  <circle cx="970" cy="244" r="78" fill="#1d4ed8" opacity="0.72"/>
+  <path d="M230 244 C370 126 470 360 600 244 S840 126 970 244" fill="none" stroke="#1d4ed8" stroke-width="14" stroke-linecap="round"/>
+  <text x="86" y="455" font-family="Arial" font-size="38" font-weight="700" fill="#111827">AI Tools, Models, Agents, Skills, Tutorials, Workflows</text>
+</svg>
